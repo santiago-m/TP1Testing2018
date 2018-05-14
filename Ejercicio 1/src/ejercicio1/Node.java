@@ -1,3 +1,4 @@
+package ejercicio1;
 public class Node {
 
 	public Node(int value) {
