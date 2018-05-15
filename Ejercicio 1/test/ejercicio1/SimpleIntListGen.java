@@ -9,6 +9,8 @@ import org.junit.experimental.theories.ParametersSuppliedBy;
 @Retention(RetentionPolicy.RUNTIME)
 @ParametersSuppliedBy(SimpleIntListGenSupplier.class)
 public @interface SimpleIntListGen {
-	int min();
-	int max();
+	int minValue();
+	int maxValue();
+	int minLength();
+	int maxLength();
 }
