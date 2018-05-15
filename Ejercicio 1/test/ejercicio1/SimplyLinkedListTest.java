@@ -14,8 +14,7 @@ import java.util.*;
 public class SimplyLinkedListTest {
 
 	@Theory
-	public void addThenRemoveDoesNotChangeListSize(@SimpleIntListGen(min = 1, max=50) List<Integer> list)  // Parameters!
-	{
+	public void addThenRemoveDoesNotChangeListSize(@SimpleIntListGen(min = 1, max=50) List<Integer> list) {
 		assumeTrue(!list.isEmpty());
 		
 		SinglyLinkedList s = new SinglyLinkedList();
@@ -23,14 +22,57 @@ public class SimplyLinkedListTest {
 		
 		assumeTrue(s.getSize() == copy_of_s.getSize());
 		
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).toString() + "\n");
-		}
-		
 		s.addFirst(list.get(0));
 		s.remove(list.get(0));
 		
 		assertTrue(s.getSize() == copy_of_s.getSize());
+	}
+	
+	@Theory
+	public void listStartsEmpty() {
+		SinglyLinkedList s = new SinglyLinkedList();
+		assertTrue(s.isEmpty());
+	}
+	
+	@Theory
+	public void copyContainsAllElementsOfOriginalNotEmpty(@SimpleIntListGen(min = 1, max = 50) List<Integer> list) {
+		assumeTrue(!list.isEmpty());
+		
+		SinglyLinkedList s = new SinglyLinkedList();
+		
+		for (int i = 0; i < list.size(); i++) {
+			s.addFirst(i);
+		}
+		
+		SinglyLinkedList copy_of_s = new SinglyLinkedList(s);
+		
+		boolean containsAll = false;
+		
+		Node current = s.getHeader().getNext();	
+		while (current!=null){
+			if(copy_of_s.contains(current.getValue())) {
+				containsAll = true;
+			}
+			else {
+				containsAll = false;
+				break;
+			}
+			current = current.getNext();
+		} 
+		
+		assertTrue(containsAll);
+	}
+	
+	@Theory
+	public void addThenRemoveInEmptyListRemainsItEmpty() {
+		SinglyLinkedList s = new SinglyLinkedList();
+		
+		assumeTrue(s.isEmpty());
+		
+		s.addFirst(1);
+		s.remove(1);
+		
+		assertTrue(s.isEmpty());
 	}
 
 }

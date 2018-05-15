@@ -16,14 +16,13 @@ public class SimpleIntListGenSupplier extends ParameterSupplier {
 		int max = annotation.max();
 		
 		List<PotentialAssignment> listsOfIntegers = new ArrayList<PotentialAssignment>();
-		Random rand;
+		Random rand = new Random();
 		
 		for (int i = 0; i < 10; i++) {
-			rand = new Random();
 			List<Integer> generatedList = new ArrayList<Integer>(); 
 			
 			for (int j = 0; j < 10; j++) {
-				int k = rand.nextInt(min) + max;
+				int k = rand.nextInt(max) + min;
 				generatedList.add(k);
 			}
 			
