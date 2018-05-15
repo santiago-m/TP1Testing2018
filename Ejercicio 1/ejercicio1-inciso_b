@@ -1,0 +1,12 @@
+Para lograr un porcentaje de cobertura mayor al 80%.- Los generadores deben parametrizarse con rangos pequeños y que abarquen todos los casos posibles:
+
+	Longitudes de las listas deben incluir:
+		Lista vacia, lista de un elemento y lista de mas de un elemento.
+	
+	Rango de valores para las listas deben incluir:
+		Valores Negativos, Cero, Valores Positivos.
+
+	Parametrización que cumple con el pedido: 
+		minValue = -3, maxValue=3, minLength = 0, maxLength = 3 
+			//minValue y maxValue determinan el rango para los elementos de las listas (extremo inferior y superior respectivamente).
+			//minLength y maxLength determinan el rango de valores para las longitudes de las listas (extremo inferior y superior respectivamente).

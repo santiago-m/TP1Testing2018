@@ -14,7 +14,7 @@ import java.util.*;
 public class SimplyLinkedListTest {
 
 	@Theory
-	public void addThenRemoveDoesNotChangeListSize(@SimpleIntListGen(minValue = 1, maxValue=50, minLength = 10, maxLength = 25) List<Integer> list) {
+	public void addThenRemoveDoesNotChangeListSize(@SimpleIntListGen(minValue = -3, maxValue=3, minLength = 0, maxLength = 3) List<Integer> list) {
 		assumeTrue(!list.isEmpty());
 		
 		SinglyLinkedList s = new SinglyLinkedList();
@@ -35,7 +35,7 @@ public class SimplyLinkedListTest {
 	}
 	
 	@Theory
-	public void copyContainsAllElementsOfOriginalNotEmpty(@SimpleIntListGen(minValue = 1, maxValue=50, minLength = 10, maxLength = 25) List<Integer> list) {
+	public void copyContainsAllElementsOfOriginalNotEmpty(@SimpleIntListGen(minValue = -3, maxValue=3, minLength = 0, maxLength = 3) List<Integer> list) {
 		assumeTrue(!list.isEmpty());
 		
 		SinglyLinkedList s = new SinglyLinkedList();
