@@ -1,0 +1,38 @@
+Segun la especificacion, los valores esperados para el correcto funcionamiento son:
+	1 <= month1 <= month2 <= 12
+	1 <= day1 , day2 <= 31
+	1 <= year <= 10000
+
+
+Para cada variable, podemos definir un dominio de la siguiente forma:
+   -----Las variables 'month1' y 'month2', tiene dominios muy similares, siendo que 'month1' esta contenida dentro de 'month2'
+        (con la restriccion de month1 <= month2), dicho esto, definimos los dominios 'dm'
+
+	dm1 = {1,3,5,7,8,10,12} // estos son los meses que tienen 31 dias
+	dm2 = {2} 		// este mes en particular (febrero) puede tener 28 o 29 dias, segun el año
+	dm3 = {4,6,9,11} 	// este conjunto, pertenece a los meses que poseen 30 dias
+
+   -----La variable 'day1' tiene una sola restriccion, quedando las particiones 'd1'
+
+	d1a = {1}		// el limite, deberia ser considerado como dominio particular
+	d1b = {2,3,4,5.. 28}	// estos numeros, son comunes a todos los meses y no hay diferencia entre ellos
+	d1d = {29}		// este caso es particular de febrero y los años bisiestos 
+	d1e = {30}		// otro caso particular de febrero, que no deberia tener nunca 30 dias
+	d1f = {31}		// hay meses donde hay 31 dias, y otros que no
+	d1g = {32,33,34 ... ((maxInt))}	// la especificacion, no dice nada sobre estos valores, que son invalidos 
+
+   ----La variable 'day2' tiene una sola restriccion, quedando las particiones 'd2'
+	d2g = {((minInt))... -1, 0}	// la especificacion, no dice nada sobre estos valores, que son invalidos 
+	d2a = {1}		// si bien nos es limite, sabemos que este valor, deberia ser el primer valor valido
+	d2b = {2,3,4,5.. 28}	// estos numeros, son comunes a todos los meses y no hay diferencia entre ellos
+	d2d = {29}		// este caso es particular de febrero y los años bisiestos 
+	d2e = {30}		// otro caso particular de febrero, que no deberia tener nunca 30 dias
+	d2f = {31}		// hay meses donde hay 31 dias, y otros que no (tambien es valor limite)
+
+   ----La variable 'year' tiene cota superior e inferior, quedando las particiones 'dy'
+	dy1 = {1}		// analizamos la cota inferior
+	dy2 = {10000}		// es util analizar la cota superior
+	dy3 = 'años bisiesto' 	// tendriamos que analizar los años que son divisibles por '4', o divisible por '100' y simultaneamente,  no ser divisible por '400'
+	dy4 = 'años no bisiesto' - {1, 10000} // el resto de los años, son iguales para el analisis
+	
+	

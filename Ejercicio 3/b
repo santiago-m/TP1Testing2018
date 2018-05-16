@@ -1,0 +1,10 @@
+  Para planear la cobertura de clausulas de la especificacion, primero deberiamos identificar primeramente, 
+los distintos condicionales que componen nuestra funcion (en este caso 'cal')
+
+	- Primero tenemos una condicion que verifica si los meses son iguales o no
+		if (month1 == month2)
+	  de ahi, tenemos dos posibilidades.. asique vamos a usar un conjunto de valores para satisfacer :
+		true  --> month1 = 1 , month2 = 1
+		false --> month1 = 1 , month2 = 2
+	  
+	  Siguiendo con este analisis, si se da la condicion de 'false', 
