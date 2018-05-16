@@ -3,8 +3,24 @@ los distintos condicionales que componen nuestra funcion (en este caso 'cal')
 
 	- Primero tenemos una condicion que verifica si los meses son iguales o no
 		if (month1 == month2)
+
 	  de ahi, tenemos dos posibilidades.. asique vamos a usar un conjunto de valores para satisfacer :
 		true  --> month1 = 1 , month2 = 1
 		false --> month1 = 1 , month2 = 2
 	  
-	  Siguiendo con este analisis, si se da la condicion de 'false', 
+	  Siguiendo con este analisis, si se da la condicion de 'false', se pasa a otra condicion
+			if ((m4 != 0) || ((m100 == 0) && (m400 != 0)))
+				donde m4   = year % 4
+				      m100 = year % 100
+				      m400 = yaer % 400 
+			true  --> year = 2010
+			false --> year = 2016
+
+	- Despues de todo lo anterior, existe un ciclo (for), con la condicion:
+		for (int i = month1 + 1 ; i <= month2 - 1 ; i++)
+
+	  Esto nos dice que si 'month2' es mayor o igual a 'month1', se ejecuta el ciclo, de lo contrario
+	  no entra al ciclo
+		true  -> month1 == month2
+		false -> month1 != month2
+

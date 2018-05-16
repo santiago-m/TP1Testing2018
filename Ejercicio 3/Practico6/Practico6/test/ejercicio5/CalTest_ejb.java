@@ -24,7 +24,10 @@ public class CalTest_ejb {
 	@Parameters 
 	public static Collection<Object[]> parameters() {
 		//
-		return Arrays.asList (new Object [][] { /* F  T,T */{1, 1, 2, 1, 2010, 31}, /* F  F,F */{1, 1, 2, 1, 2016, 31}, /* T   -,- */ {1, 1, 1, 1, 2016, 0}}); 
+		return Arrays.asList (new Object [][] { /* F  T,T  F */{1, 1, 3, 1, 2010, 59}, 
+												/* F  F,F  F */{1, 1, 3, 1, 2016, 60}, 
+												/* T   -,-  T*/ {1, 1, 1, 1, 2016, 0}
+											  }); 
 	}
 
 	@Test 

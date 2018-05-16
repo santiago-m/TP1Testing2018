@@ -14,25 +14,27 @@ Para cada variable, podemos definir un dominio de la siguiente forma:
 
    -----La variable 'day1' tiene una sola restriccion, quedando las particiones 'd1'
 
-	d1a = {1}		// el limite, deberia ser considerado como dominio particular
-	d1b = {2,3,4,5.. 28}	// estos numeros, son comunes a todos los meses y no hay diferencia entre ellos
-	d1d = {29}		// este caso es particular de febrero y los años bisiestos 
-	d1e = {30}		// otro caso particular de febrero, que no deberia tener nunca 30 dias
-	d1f = {31}		// hay meses donde hay 31 dias, y otros que no
-	d1g = {32,33,34 ... ((maxInt))}	// la especificacion, no dice nada sobre estos valores, que son invalidos 
+	d1a = {1,2,3,4,5.. 28}	// estos numeros, son comunes a todos los meses y no hay diferencia entre ellos
+	d1b = {29}		// este caso es particular de febrero y los años bisiestos 
+	d1c = {30}		// otro caso particular de febrero, que no deberia tener nunca 30 dias
+	d1d = {31}		// hay meses donde hay 31 dias, y otros que no
+	d1f = {32,33,34 ... ((maxInt))}	// la especificacion, no dice nada sobre estos valores, que son invalidos 
 
    ----La variable 'day2' tiene una sola restriccion, quedando las particiones 'd2'
-	d2g = {((minInt))... -1, 0}	// la especificacion, no dice nada sobre estos valores, que son invalidos 
-	d2a = {1}		// si bien nos es limite, sabemos que este valor, deberia ser el primer valor valido
-	d2b = {2,3,4,5.. 28}	// estos numeros, son comunes a todos los meses y no hay diferencia entre ellos
-	d2d = {29}		// este caso es particular de febrero y los años bisiestos 
-	d2e = {30}		// otro caso particular de febrero, que no deberia tener nunca 30 dias
-	d2f = {31}		// hay meses donde hay 31 dias, y otros que no (tambien es valor limite)
+	d2a = {((minInt))... -1, 0}	// la especificacion, no dice nada sobre estos valores, que son invalidos 
+	d2b = {1,2,3,4,5.. 28}	// estos numeros, son comunes a todos los meses y no hay diferencia entre ellos
+	d2c = {29}		// este caso es particular de febrero y los años bisiestos 
+	d2d = {30}		// otro caso particular de febrero, que no deberia tener nunca 30 dias
+	d2e = {31}		// hay meses donde hay 31 dias, y otros que no (tambien es valor limite)
 
    ----La variable 'year' tiene cota superior e inferior, quedando las particiones 'dy'
-	dy1 = {1}		// analizamos la cota inferior
-	dy2 = {10000}		// es util analizar la cota superior
-	dy3 = 'años bisiesto' 	// tendriamos que analizar los años que son divisibles por '4', o divisible por '100' y simultaneamente,  no ser divisible por '400'
-	dy4 = 'años no bisiesto' - {1, 10000} // el resto de los años, son iguales para el analisis
+	dy1 = 'años bisiesto' 	// tendriamos que analizar los años que son divisibles por '4', o divisible por '100' y simultaneamente,  no ser divisible por '400'
+	dy2 = 'años no bisiesto' - {1, 10000} // el resto de los años, son iguales para el analisis
 	
-	
+
+	vamos a usar como base, los valores:
+	-- month1 = 1
+	-- day1 = 1
+	-- month2 = 12
+	-- day2 = 31
+	-- year = 1	
