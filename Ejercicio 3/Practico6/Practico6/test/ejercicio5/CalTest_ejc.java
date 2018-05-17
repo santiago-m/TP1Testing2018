@@ -5,7 +5,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import static org.junit.Assert.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+
 
 @RunWith (Parameterized.class)
 public class CalTest_ejc {
@@ -29,9 +31,31 @@ public class CalTest_ejc {
 												/* T   _,_  T */ {1, 1, 1, 1, 2016, 0}
 											  }); 
 	}
+	
+
 
 	@Test 
 	public void dayTest() {
-		assertTrue ("Wrong number of days", expected == Cal.main (m1, d1, m2, d2, y));
+		/*Cal.main(new String[0]);
+		
+		System.out.println(1);
+		System.out.println(1);
+		System.out.println(1);
+		System.out.println(1);
+		System.out.println(1);
+		String expect = outContent.toString();*/
+		assertTrue ("Wrong number of days", expected == Cal.cal (m1, d1, m2, d2, y));
 	}
+	
+	/*@Test
+	public void methodShouldLaunchTheSpaceShuttle() {
+	  StringWriter output = new StringWriter();
+	  String input = "5\n"        // "Please enter another value!"
+	               + "10\n"       // "Code accepted. Enter command:"
+	               + "Shuttle\n"; // "Launching space shuttle..."
+	  systemUnderTest.method(new Scanner(input), new PrintWriter(output));
+
+	  assertThat(output.toString(), contains("Please enter another value!"));
+	  assertTrue(systemUnderTest.spaceShuttleLaunched());
+	}*/
 }

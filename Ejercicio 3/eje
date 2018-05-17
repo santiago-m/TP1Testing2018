@@ -1,0 +1,39 @@
+Algunos test que se podrian sugerir, en base a analizar el algoritmo, son
+	{month1, day1, month2, day2, year, expected_value}
+
+	/* 0 */ {2, 27, 3, 1, 2016, 3}
+		en este caso, verificamos si efectivamente febrero cuenta con 29 dias en año bisiesto
+
+	/* 1 */ {2, 27, 3, 1, 2018, 2}
+		similar al anterior, verificamos si febrero cuenta con 28 dias en un año bisiesto
+
+	/* 2 */ {2, 31, 3, 1, 2018, 28}
+		febrero nunca podria tener 31 dias, segun la nota al final, pasariamos a considerar el primero de febrero
+
+	/* 3 */	{2, 31, 3, 1, 2016, 29}
+		analogo al anterior, pero en año bisiesto
+
+	/* 4 */ {2, 27, 2, 15, 2018, 12}
+		la especificacion, especifica restricciones entre los valores de meses, pero no entre los dias, asique invertimos
+
+	/* 5 */ {4, 31, 5, 1, 2018, 30}
+		abril tiene 30 dias, segun la nota del final, pasamos al primero de abril
+
+	/* 6 */ {4, 30, 5, 1, 2018, 1}
+		abril tiene 30 dias, controlamos la el caso
+
+	/* 7 */  {0, 1, 1, 2, 2018, 1}
+		day1 no puede valer cero (aplicamos Nota)
+
+	/* 8 */  {1, 1, 13, 2, 2018, 1}
+		month2 no puede ser mayor que 12 (aplicamos Nota)
+
+	/* 9 */  {1, 0, 1, 2 ,2018, 1}
+		month1 no puede ser menor a 1 (aplicamos Nota)
+
+	/* 10 */ {1, 1, 1, 32, 2018, 0}
+		day2 no puede ser mayor que 31 (aplicamos Nota)
+
+
+Nota: una consideracion especial, es que hemos notado que introduciendo un valor fuera de la especificacion (en el programa), 
+dicho valor pasa a ser '1', entonces en los casos donde se ingresan valores incorrectos, se considero la misma situacion
