@@ -1,20 +1,22 @@
 b) cambiando la condicion del while de "while (numPrimes < n)" a "while (numPrimes < 4)" se consigue:
-t1(n=3) =
+		t1(n=3) =
 			Prime: 2
 			Prime: 3
 			Prime: 5
-lo que es correcto.
+		lo que es correcto.
 
-t2(n=5) = 
+		t2(n=5) = 
 			Prime: 2
 			Prime: 3
 			Prime: 5
 			Prime: 7
-pero se esperaba: 	Prime: 2
-					Prime: 3
-					Prime: 5
-					Prime: 7
-					Prime: 11.
+
+		pero se esperaba: 	
+			Prime: 2
+			Prime: 3
+			Prime: 5
+			Prime: 7
+			Prime: 11.
 
 c) Test t(n=1), al realizar la comparacion con el while el programa pasa directamente a la sentencia for del final.
 
