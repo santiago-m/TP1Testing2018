@@ -32,9 +32,25 @@ Para cada variable, podemos definir un dominio de la siguiente forma:
 	dy2 = 'años no bisiesto' - {1, 10000} // el resto de los años, son iguales para el analisis
 	
 
-	vamos a usar como base, los valores:
-	-- month1 = 1
-	-- day1 = 1
-	-- month2 = 12
-	-- day2 = 31
-	-- year = 1	
+	vamos a usar los valores {day1, month1, day2, month2, year, expected_value}:
+
+	/* Base */            /* 0 */  {1, 1, 12, 31, 1, 364},
+
+	/* Variando month2 */ /* 1 */  {1, 1, 1, 31, 1, 30},    /* 2 */ {1, 1, 2, 31, 1, 31},    /* 3 */ {1, 1, 4, 31, 1, 90},
+
+	/* Variando month1 */ /* 4 */  {2, 1, 12, 31, 1, 333},  /* 5 */ {4, 1, 12, 31, 1, 274},
+
+	/* Variando day1   */ /* 6 */  {1, 31, 12, 31, 1, 334}, /* 7 */ {1, 32, 12, 31, 1, 364}, /* 8 */ {1, 29, 12, 31, 1, 336}, /* 9 */ {1, 30, 12, 31, 1, 335},
+
+	/* Variando day2   */ /* 10 */ {1, 1, 12, 0, 1, 334},     /* 11 */ {1, 1, 12, 1, 1, 334}, /* 12 */ {1, 1, 12, 29, 1 ,362}, /* 13 */ {1, 1, 12 , 30, 1, 363}, /* 14 */ {1, 1, 12, 31, 1, 364},
+
+	/* Variando year   */ /* 15 */ {1, 1, 12, 31, 2016, 365}
+
+
+	Si bien se han omitido casos, es para no tener redundancia en los test.. por ejemplo:
+		{1, 1, 12 , 31, 2017, 364}
+	este test, seria valido para la variacion de anio, pero 2017 es anio no bisiesto, al igual que el anio 1, por lo tanto
+	es equivalente a probar la base (/* 0 */)
+
+	Otra consideracion especial, es que hemos notado que introduciendo un valor fuera de la especificacion, 
+	dicho valor pasa a ser '1', entonces en los casos donde se ingresan valores incorrectos, se considero la misma situacion

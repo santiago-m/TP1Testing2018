@@ -8,11 +8,11 @@ import static org.junit.Assert.*;
 import java.util.*;
 
 @RunWith (Parameterized.class)
-public class CalTest_ejb {
+public class CalTest_ejc {
 	
 	public int m1, d1, m2, d2, y, expected;
 	
-	public CalTest_ejb (int v11, int v12, int v21, int v22, int year, int expected){
+	public CalTest_ejc (int v11, int v12, int v21, int v22, int year, int expected){
 		this.m1 = v11;
 		this.d1 = v12;
 		this.m2 = v21;
@@ -32,6 +32,6 @@ public class CalTest_ejb {
 
 	@Test 
 	public void dayTest() {
-		assertTrue ("Wrong number of days", expected == Cal.cal (m1, d1, m2, d2, y));
+		assertTrue ("Wrong number of days", expected == Cal.main (m1, d1, m2, d2, y));
 	}
 }
