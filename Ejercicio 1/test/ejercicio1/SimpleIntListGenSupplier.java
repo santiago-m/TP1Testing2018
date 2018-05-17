@@ -22,7 +22,7 @@ public class SimpleIntListGenSupplier extends ParameterSupplier {
 		Random value = new Random();
 		Random length = new Random();
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 50; i++) {
 			int listSize = length.nextInt(maxLength) + minLength;
 			List<Integer> generatedList = new ArrayList<Integer>(listSize); 
 			
