@@ -34,6 +34,7 @@ public class CalTest_eja {
 
 	@Test 
 	public void dayTest() {
-		assertTrue ("Wrong number of days", expected == Cal.cal (m1, d1, m2, d2, y));
+		int temp = Cal.cal (m1, d1, m2, d2, y);
+		assertTrue ("Wrong number of days, expected: " + expected + " obtained: " + temp , expected == temp);
 	}
 }

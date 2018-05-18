@@ -1,0 +1,74 @@
+La idea en un principio, tendriamos 
+
+        A <-- if (month2 == month1)
+        B <-- if (m4 != 0) || ((m100 == 0) && (m400 != 0))
+        C <-- for (int i = month1 + 1; i <= month2 -1; i++)
+
+
+ El caso mas interesante de analizar, seria el B, ya que el A tiene solo dos casos, si es True, no se da B y necesariamente, tampoco
+se da C, ya que si los meses son iguales, nunca entra al ciclo for. Del mismo modo, si A es False, necesariamente entra a B y se dan
+los casos presentados mas abajo, y tambien, necesariamente se ejecuta el ciclo for, ya que es la misma razon que hace True 
+al predicado B. 
+
+          1              2               3
+   ------------------------------------------------------------------------------------------------------------------------------
+   |  (m4 != 0)  |  (m100 == 0)  |  (m400 != 0)  |  ((m100 == 0) && (m400 != 0))  |  (m4 != 0) || ((m100 == 0) && (m400 != 0))  |
+   |-------------|---------------|---------------|--------------------------------|---------------------------------------------|
+   |      T      |       T       |       T       |               T                |                       T                     |
+   |      F      |       T       |       T       |               T                |                       T                     |  2 3
+   |-------------|---------------|---------------|--------------------------------|---------------------------------------------|
+   |      T      |       T       |       F       |               F                |                       T                     |1
+   |      F      |       T       |       F       |               F                |                       F                     |1   3
+   |-------------|---------------|---------------|--------------------------------|---------------------------------------------|
+   |      T      |       F       |       T       |               F                |                       T                     |1
+   |      F      |       F       |       T       |               F                |                       F                     |1 2
+   |-------------|---------------|---------------|--------------------------------|---------------------------------------------|
+   |      T      |       F       |       F       |               F                |                       T                     |1
+   |      F      |       F       |       F       |               F                |                       F                     |1
+   ------------------------------------------------------------------------------------------------------------------------------
+
+
+ Ahora tenemos que armar los pares de valores.. para 2 y 3, solo existe un par de cada uno, 
+en donde hacen cambiar el valor final del predicado, pero en el caso de 1, 
+hay que armar con las posibles combinaciones del predicado:
+
+vamos a fijar los valores que hacen llegar a B, que son comunes para los siguientes casos:   
+day1 = 1    month1 =1    day2=1    month2= 2
+
+caso 1) (F || (T && T))  ---> year = 2100
+
+caso 2) (F || (F && T )) ---> year = 2016
+  
+caso 3) (F || (T && T )) ---> year = 2100
+
+caso 4) (F || (T && F )) ---> year = 2000
+
+caso 5) (T || (T && F )) ---> este caso no se puede dar, porque nos dice que un numero tiene que ser divisible por 4, 
+                              pero no por 400, y 400 es multiplo de 4
+
+caso 6) (F || (T && F )) ---> year = 2000
+
+caso 7) (T || (F && T )) ---> year = 2
+ 
+caso 8) (F || (F && T )) ---> year = 2016
+
+caso 9) (T || (F && F )) ---> este caso no se puede dar, porque nos dice que un numero tiene que ser divisible por 4,
+                              pero no por 400, y 400 es multiplo de 4
+
+caso 10)(F || (F && F )) -- > este caso no se puede dar, porque si es numero es multiplo de 400 (y al mismo tiempo de 4),
+                              es necesariamente multiplo de 100
+
+
+aca podemos ver que hay casos que usan los mismos anios (1,3) (2,8) (4,6), por lo tanto solo usamos uno por cada caso donde
+existen repetidos
+
+ahora con lo planteado al principio, sumando lo planteado en los 10 casos anteriores, podemos concluir que los test a probar, serian
+
+{day1, month1, day2, month2, year}
+
+{1,    1,      1,    1,      1   }   A:True   B:no ejecuta   C:False
+{1,    1,      3,    1,      2100}   A:False  B:True         C:True
+{1,    1,      3,    1,      2016}   A:False  B:False        C:True
+{1,    1,      3,    1,      2000}   A:False  B:False        C:True
+{1,    1,      3,    1,      2   }   A:False  B:True         C:True
+

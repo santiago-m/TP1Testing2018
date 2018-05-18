@@ -41,6 +41,6 @@ public class CalTest_eje {
 	@Test 
 	public void dayTest() {
 		int temp = Cal.cal (m1, d1, m2, d2, y);
-		assertTrue ("Wrong number of days, expected: " + expected + " throwed: " + temp, expected == temp);
+		assertTrue ("Wrong number of days, expected: " + expected + " obtained: " + temp , expected == temp);
 	}
 }

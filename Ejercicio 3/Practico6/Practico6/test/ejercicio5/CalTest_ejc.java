@@ -26,9 +26,11 @@ public class CalTest_ejc {
 	@Parameters 
 	public static Collection<Object[]> parameters() {
 		//
-		return Arrays.asList (new Object [][] { /* F  T,T  F  */ {1, 1, 3, 1, 2010, 59}, 
-												/* F  F,F  F  */ {1, 1, 3, 1, 2016, 60}, 
-												/* T   _,_  T */ {1, 1, 1, 1, 2016, 0}
+		return Arrays.asList (new Object [][] { /* 0 */ {1, 1, 1, 1, 1, 0}, 
+												/* 1 */ {1, 1, 3, 1, 2100, 59}, 
+												/* 2 */ {1, 1, 3, 1, 2016, 60},
+												/* 3 */ {1, 1, 3, 1, 2000, 60},
+												/* 4 */ {1, 1, 3, 1, 2, 59}
 											  }); 
 	}
 	
@@ -36,26 +38,7 @@ public class CalTest_ejc {
 
 	@Test 
 	public void dayTest() {
-		/*Cal.main(new String[0]);
-		
-		System.out.println(1);
-		System.out.println(1);
-		System.out.println(1);
-		System.out.println(1);
-		System.out.println(1);
-		String expect = outContent.toString();*/
-		assertTrue ("Wrong number of days", expected == Cal.cal (m1, d1, m2, d2, y));
+		int temp = Cal.cal (m1, d1, m2, d2, y);
+		assertTrue ("Wrong number of days, expected: " + expected + " obtained: " + temp , expected == temp);
 	}
-	
-	/*@Test
-	public void methodShouldLaunchTheSpaceShuttle() {
-	  StringWriter output = new StringWriter();
-	  String input = "5\n"        // "Please enter another value!"
-	               + "10\n"       // "Code accepted. Enter command:"
-	               + "Shuttle\n"; // "Launching space shuttle..."
-	  systemUnderTest.method(new Scanner(input), new PrintWriter(output));
-
-	  assertThat(output.toString(), contains("Please enter another value!"));
-	  assertTrue(systemUnderTest.spaceShuttleLaunched());
-	}*/
 }
